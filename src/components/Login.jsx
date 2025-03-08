@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button, Container, Row, Col, Card } from 'react-bootstrap';
 
 const Login = () => {
   const [user, setUser] = useState(null);
@@ -43,18 +44,28 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      {user ? (
-        <div>
-          <h2>Welcome, {user.username}</h2>
-          <p>Email: {user.email}</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <button onClick={handleGoogleLogin}>Sign in with Google</button>
-      )}
-    </div>
+    <Container className="mt-5">
+      <Row className="justify-content-md-center">
+        <Col md="6">
+          <Card className="shadow-sm">
+            <Card.Body>
+              <Card.Title className="text-center mb-4">Bookmark App</Card.Title>
+              {user ? (
+                <div className="text-center">
+                  <h2>Welcome, {user.username}</h2>
+                  <p>Email: {user.email}</p>
+                  <Button variant="danger" onClick={handleLogout}>Logout</Button>
+                </div>
+              ) : (
+                <div className="text-center">
+                  <Button variant="primary" onClick={handleGoogleLogin}>Sign in with Google</Button>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
